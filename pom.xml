@@ -3,7 +3,7 @@
 
 	<groupId>br.com.dextra</groupId>
 	<artifactId>jbpm-helper</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>jBPM Helper</name>
@@ -16,7 +16,7 @@
 		<connection>scm:git:ssh://git@github.com/leonardo-dextra/jbpm-helper.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/leonardo-dextra/jbpm-helper.git</developerConnection>
 		<url>https://github.com/leonardo-dextra/jbpm-helper</url>
-		<tag>jbpm-helper-1.1.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
