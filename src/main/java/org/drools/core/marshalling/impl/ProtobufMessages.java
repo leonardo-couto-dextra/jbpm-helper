@@ -331,7 +331,7 @@ public final class ProtobufMessages {
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         initFields();
-		int mutable_bitField0_ = 0;
+        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -2130,7 +2130,7 @@ public final class ProtobufMessages {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Version(
+	private Version(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -42749,6 +42749,20 @@ public final class ProtobufMessages {
      * <code>optional .org.drools.core.marshalling.Trigger.PointInTimeTrigger pit = 4;</code>
      */
     org.drools.core.marshalling.impl.ProtobufMessages.Trigger.PointInTimeTriggerOrBuilder getPitOrBuilder();
+
+    // optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;
+    /**
+     * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+     */
+    boolean hasCmdt();
+    /**
+     * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+     */
+    org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger getCmdt();
+    /**
+     * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+     */
+    org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTriggerOrBuilder getCmdtOrBuilder();
   }
   /**
    * Protobuf type {@code org.drools.core.marshalling.Trigger}
@@ -42851,6 +42865,19 @@ public final class ProtobufMessages {
               bitField0_ |= 0x00000008;
               break;
             }
+            case 42: {
+              org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = cmdt_.toBuilder();
+              }
+              cmdt_ = input.readMessage(org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cmdt_);
+                cmdt_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -42907,6 +42934,10 @@ public final class ProtobufMessages {
        * <code>POINT_IN_TIME = 2;</code>
        */
       POINT_IN_TIME(2, 2),
+      /**
+       * <code>COMPOSITE_MAX_DURATION = 3;</code>
+       */
+      COMPOSITE_MAX_DURATION(3, 3),
       ;
 
       /**
@@ -42921,6 +42952,10 @@ public final class ProtobufMessages {
        * <code>POINT_IN_TIME = 2;</code>
        */
       public static final int POINT_IN_TIME_VALUE = 2;
+      /**
+       * <code>COMPOSITE_MAX_DURATION = 3;</code>
+       */
+      public static final int COMPOSITE_MAX_DURATION_VALUE = 3;
 
 
       public final int getNumber() { return value; }
@@ -42930,6 +42965,7 @@ public final class ProtobufMessages {
           case 0: return CRON;
           case 1: return INTERVAL;
           case 2: return POINT_IN_TIME;
+          case 3: return COMPOSITE_MAX_DURATION;
           default: return null;
         }
       }
@@ -45424,6 +45460,675 @@ public final class ProtobufMessages {
       // @@protoc_insertion_point(class_scope:org.drools.core.marshalling.Trigger.PointInTimeTrigger)
     }
 
+    public interface CompositeMaxDurationTriggerOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // optional int64 maxDurationTimestamp = 1;
+      /**
+       * <code>optional int64 maxDurationTimestamp = 1;</code>
+       */
+      boolean hasMaxDurationTimestamp();
+      /**
+       * <code>optional int64 maxDurationTimestamp = 1;</code>
+       */
+      long getMaxDurationTimestamp();
+
+      // optional int64 timerCurrentDate = 2;
+      /**
+       * <code>optional int64 timerCurrentDate = 2;</code>
+       */
+      boolean hasTimerCurrentDate();
+      /**
+       * <code>optional int64 timerCurrentDate = 2;</code>
+       */
+      long getTimerCurrentDate();
+
+      // optional .org.drools.core.marshalling.Trigger timerTrigger = 3;
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+       */
+      boolean hasTimerTrigger();
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+       */
+      org.drools.core.marshalling.impl.ProtobufMessages.Trigger getTimerTrigger();
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+       */
+      org.drools.core.marshalling.impl.ProtobufMessages.TriggerOrBuilder getTimerTriggerOrBuilder();
+    }
+    /**
+     * Protobuf type {@code org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger}
+     */
+    public static final class CompositeMaxDurationTrigger extends
+        com.google.protobuf.GeneratedMessage
+        implements CompositeMaxDurationTriggerOrBuilder {
+      // Use CompositeMaxDurationTrigger.newBuilder() to construct.
+      private CompositeMaxDurationTrigger(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private CompositeMaxDurationTrigger(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final CompositeMaxDurationTrigger defaultInstance;
+      public static CompositeMaxDurationTrigger getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public CompositeMaxDurationTrigger getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private CompositeMaxDurationTrigger(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 8: {
+                bitField0_ |= 0x00000001;
+                maxDurationTimestamp_ = input.readInt64();
+                break;
+              }
+              case 16: {
+                bitField0_ |= 0x00000002;
+                timerCurrentDate_ = input.readInt64();
+                break;
+              }
+              case 26: {
+                org.drools.core.marshalling.impl.ProtobufMessages.Trigger.Builder subBuilder = null;
+                if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                  subBuilder = timerTrigger_.toBuilder();
+                }
+                timerTrigger_ = input.readMessage(org.drools.core.marshalling.impl.ProtobufMessages.Trigger.PARSER, extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(timerTrigger_);
+                  timerTrigger_ = subBuilder.buildPartial();
+                }
+                bitField0_ |= 0x00000004;
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.drools.core.marshalling.impl.ProtobufMessages.internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.drools.core.marshalling.impl.ProtobufMessages.internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.class, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<CompositeMaxDurationTrigger> PARSER =
+          new com.google.protobuf.AbstractParser<CompositeMaxDurationTrigger>() {
+        public CompositeMaxDurationTrigger parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new CompositeMaxDurationTrigger(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<CompositeMaxDurationTrigger> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // optional int64 maxDurationTimestamp = 1;
+      public static final int MAXDURATIONTIMESTAMP_FIELD_NUMBER = 1;
+      private long maxDurationTimestamp_;
+      /**
+       * <code>optional int64 maxDurationTimestamp = 1;</code>
+       */
+      public boolean hasMaxDurationTimestamp() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int64 maxDurationTimestamp = 1;</code>
+       */
+      public long getMaxDurationTimestamp() {
+        return maxDurationTimestamp_;
+      }
+
+      // optional int64 timerCurrentDate = 2;
+      public static final int TIMERCURRENTDATE_FIELD_NUMBER = 2;
+      private long timerCurrentDate_;
+      /**
+       * <code>optional int64 timerCurrentDate = 2;</code>
+       */
+      public boolean hasTimerCurrentDate() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int64 timerCurrentDate = 2;</code>
+       */
+      public long getTimerCurrentDate() {
+        return timerCurrentDate_;
+      }
+
+      // optional .org.drools.core.marshalling.Trigger timerTrigger = 3;
+      public static final int TIMERTRIGGER_FIELD_NUMBER = 3;
+      private org.drools.core.marshalling.impl.ProtobufMessages.Trigger timerTrigger_;
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+       */
+      public boolean hasTimerTrigger() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+       */
+      public org.drools.core.marshalling.impl.ProtobufMessages.Trigger getTimerTrigger() {
+        return timerTrigger_;
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+       */
+      public org.drools.core.marshalling.impl.ProtobufMessages.TriggerOrBuilder getTimerTriggerOrBuilder() {
+        return timerTrigger_;
+      }
+
+      private void initFields() {
+        maxDurationTimestamp_ = 0L;
+        timerCurrentDate_ = 0L;
+        timerTrigger_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.getDefaultInstance();
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeInt64(1, maxDurationTimestamp_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeInt64(2, timerCurrentDate_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeMessage(3, timerTrigger_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt64Size(1, maxDurationTimestamp_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt64Size(2, timerCurrentDate_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, timerTrigger_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTriggerOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.drools.core.marshalling.impl.ProtobufMessages.internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.drools.core.marshalling.impl.ProtobufMessages.internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.class, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder.class);
+        }
+
+        // Construct using org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+            getTimerTriggerFieldBuilder();
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          maxDurationTimestamp_ = 0L;
+          bitField0_ = (bitField0_ & ~0x00000001);
+          timerCurrentDate_ = 0L;
+          bitField0_ = (bitField0_ & ~0x00000002);
+          if (timerTriggerBuilder_ == null) {
+            timerTrigger_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.getDefaultInstance();
+          } else {
+            timerTriggerBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000004);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return org.drools.core.marshalling.impl.ProtobufMessages.internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_descriptor;
+        }
+
+        public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger getDefaultInstanceForType() {
+          return org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.getDefaultInstance();
+        }
+
+        public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger build() {
+          org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger buildPartial() {
+          org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger result = new org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.maxDurationTimestamp_ = maxDurationTimestamp_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.timerCurrentDate_ = timerCurrentDate_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          if (timerTriggerBuilder_ == null) {
+            result.timerTrigger_ = timerTrigger_;
+          } else {
+            result.timerTrigger_ = timerTriggerBuilder_.build();
+          }
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger) {
+            return mergeFrom((org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger other) {
+          if (other == org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.getDefaultInstance()) return this;
+          if (other.hasMaxDurationTimestamp()) {
+            setMaxDurationTimestamp(other.getMaxDurationTimestamp());
+          }
+          if (other.hasTimerCurrentDate()) {
+            setTimerCurrentDate(other.getTimerCurrentDate());
+          }
+          if (other.hasTimerTrigger()) {
+            mergeTimerTrigger(other.getTimerTrigger());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // optional int64 maxDurationTimestamp = 1;
+        private long maxDurationTimestamp_ ;
+        /**
+         * <code>optional int64 maxDurationTimestamp = 1;</code>
+         */
+        public boolean hasMaxDurationTimestamp() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>optional int64 maxDurationTimestamp = 1;</code>
+         */
+        public long getMaxDurationTimestamp() {
+          return maxDurationTimestamp_;
+        }
+        /**
+         * <code>optional int64 maxDurationTimestamp = 1;</code>
+         */
+        public Builder setMaxDurationTimestamp(long value) {
+          bitField0_ |= 0x00000001;
+          maxDurationTimestamp_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional int64 maxDurationTimestamp = 1;</code>
+         */
+        public Builder clearMaxDurationTimestamp() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          maxDurationTimestamp_ = 0L;
+          onChanged();
+          return this;
+        }
+
+        // optional int64 timerCurrentDate = 2;
+        private long timerCurrentDate_ ;
+        /**
+         * <code>optional int64 timerCurrentDate = 2;</code>
+         */
+        public boolean hasTimerCurrentDate() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>optional int64 timerCurrentDate = 2;</code>
+         */
+        public long getTimerCurrentDate() {
+          return timerCurrentDate_;
+        }
+        /**
+         * <code>optional int64 timerCurrentDate = 2;</code>
+         */
+        public Builder setTimerCurrentDate(long value) {
+          bitField0_ |= 0x00000002;
+          timerCurrentDate_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional int64 timerCurrentDate = 2;</code>
+         */
+        public Builder clearTimerCurrentDate() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          timerCurrentDate_ = 0L;
+          onChanged();
+          return this;
+        }
+
+        // optional .org.drools.core.marshalling.Trigger timerTrigger = 3;
+        private org.drools.core.marshalling.impl.ProtobufMessages.Trigger timerTrigger_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.getDefaultInstance();
+        private com.google.protobuf.SingleFieldBuilder<
+            org.drools.core.marshalling.impl.ProtobufMessages.Trigger, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.Builder, org.drools.core.marshalling.impl.ProtobufMessages.TriggerOrBuilder> timerTriggerBuilder_;
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public boolean hasTimerTrigger() {
+          return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public org.drools.core.marshalling.impl.ProtobufMessages.Trigger getTimerTrigger() {
+          if (timerTriggerBuilder_ == null) {
+            return timerTrigger_;
+          } else {
+            return timerTriggerBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public Builder setTimerTrigger(org.drools.core.marshalling.impl.ProtobufMessages.Trigger value) {
+          if (timerTriggerBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            timerTrigger_ = value;
+            onChanged();
+          } else {
+            timerTriggerBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000004;
+          return this;
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public Builder setTimerTrigger(
+            org.drools.core.marshalling.impl.ProtobufMessages.Trigger.Builder builderForValue) {
+          if (timerTriggerBuilder_ == null) {
+            timerTrigger_ = builderForValue.build();
+            onChanged();
+          } else {
+            timerTriggerBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000004;
+          return this;
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public Builder mergeTimerTrigger(org.drools.core.marshalling.impl.ProtobufMessages.Trigger value) {
+          if (timerTriggerBuilder_ == null) {
+            if (((bitField0_ & 0x00000004) == 0x00000004) &&
+                timerTrigger_ != org.drools.core.marshalling.impl.ProtobufMessages.Trigger.getDefaultInstance()) {
+              timerTrigger_ =
+                org.drools.core.marshalling.impl.ProtobufMessages.Trigger.newBuilder(timerTrigger_).mergeFrom(value).buildPartial();
+            } else {
+              timerTrigger_ = value;
+            }
+            onChanged();
+          } else {
+            timerTriggerBuilder_.mergeFrom(value);
+          }
+          bitField0_ |= 0x00000004;
+          return this;
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public Builder clearTimerTrigger() {
+          if (timerTriggerBuilder_ == null) {
+            timerTrigger_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.getDefaultInstance();
+            onChanged();
+          } else {
+            timerTriggerBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000004);
+          return this;
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.Builder getTimerTriggerBuilder() {
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return getTimerTriggerFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        public org.drools.core.marshalling.impl.ProtobufMessages.TriggerOrBuilder getTimerTriggerOrBuilder() {
+          if (timerTriggerBuilder_ != null) {
+            return timerTriggerBuilder_.getMessageOrBuilder();
+          } else {
+            return timerTrigger_;
+          }
+        }
+        /**
+         * <code>optional .org.drools.core.marshalling.Trigger timerTrigger = 3;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            org.drools.core.marshalling.impl.ProtobufMessages.Trigger, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.Builder, org.drools.core.marshalling.impl.ProtobufMessages.TriggerOrBuilder> 
+            getTimerTriggerFieldBuilder() {
+          if (timerTriggerBuilder_ == null) {
+            timerTriggerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                org.drools.core.marshalling.impl.ProtobufMessages.Trigger, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.Builder, org.drools.core.marshalling.impl.ProtobufMessages.TriggerOrBuilder>(
+                    timerTrigger_,
+                    getParentForChildren(),
+                    isClean());
+            timerTrigger_ = null;
+          }
+          return timerTriggerBuilder_;
+        }
+
+        // @@protoc_insertion_point(builder_scope:org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger)
+      }
+
+      static {
+        defaultInstance = new CompositeMaxDurationTrigger(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger)
+    }
+
     private int bitField0_;
     // optional .org.drools.core.marshalling.Trigger.TriggerType type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
@@ -45507,11 +46212,34 @@ public final class ProtobufMessages {
       return pit_;
     }
 
+    // optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;
+    public static final int CMDT_FIELD_NUMBER = 5;
+    private org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger cmdt_;
+    /**
+     * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+     */
+    public boolean hasCmdt() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+     */
+    public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger getCmdt() {
+      return cmdt_;
+    }
+    /**
+     * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+     */
+    public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTriggerOrBuilder getCmdtOrBuilder() {
+      return cmdt_;
+    }
+
     private void initFields() {
       type_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.TriggerType.CRON;
       cron_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CronTrigger.getDefaultInstance();
       interval_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.IntervalTrigger.getDefaultInstance();
       pit_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.PointInTimeTrigger.getDefaultInstance();
+      cmdt_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -45537,6 +46265,9 @@ public final class ProtobufMessages {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(4, pit_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, cmdt_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -45561,6 +46292,10 @@ public final class ProtobufMessages {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, pit_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, cmdt_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -45673,6 +46408,7 @@ public final class ProtobufMessages {
           getCronFieldBuilder();
           getIntervalFieldBuilder();
           getPitFieldBuilder();
+          getCmdtFieldBuilder();
         }
       }
       private static Builder create() {
@@ -45701,6 +46437,12 @@ public final class ProtobufMessages {
           pitBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (cmdtBuilder_ == null) {
+          cmdt_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.getDefaultInstance();
+        } else {
+          cmdtBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -45757,6 +46499,14 @@ public final class ProtobufMessages {
         } else {
           result.pit_ = pitBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        if (cmdtBuilder_ == null) {
+          result.cmdt_ = cmdt_;
+        } else {
+          result.cmdt_ = cmdtBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -45784,6 +46534,9 @@ public final class ProtobufMessages {
         }
         if (other.hasPit()) {
           mergePit(other.getPit());
+        }
+        if (other.hasCmdt()) {
+          mergeCmdt(other.getCmdt());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -46199,6 +46952,123 @@ public final class ProtobufMessages {
         return pitBuilder_;
       }
 
+      // optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;
+      private org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger cmdt_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTriggerOrBuilder> cmdtBuilder_;
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public boolean hasCmdt() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger getCmdt() {
+        if (cmdtBuilder_ == null) {
+          return cmdt_;
+        } else {
+          return cmdtBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public Builder setCmdt(org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger value) {
+        if (cmdtBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cmdt_ = value;
+          onChanged();
+        } else {
+          cmdtBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public Builder setCmdt(
+          org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder builderForValue) {
+        if (cmdtBuilder_ == null) {
+          cmdt_ = builderForValue.build();
+          onChanged();
+        } else {
+          cmdtBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public Builder mergeCmdt(org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger value) {
+        if (cmdtBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              cmdt_ != org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.getDefaultInstance()) {
+            cmdt_ =
+              org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.newBuilder(cmdt_).mergeFrom(value).buildPartial();
+          } else {
+            cmdt_ = value;
+          }
+          onChanged();
+        } else {
+          cmdtBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public Builder clearCmdt() {
+        if (cmdtBuilder_ == null) {
+          cmdt_ = org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.getDefaultInstance();
+          onChanged();
+        } else {
+          cmdtBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder getCmdtBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getCmdtFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      public org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTriggerOrBuilder getCmdtOrBuilder() {
+        if (cmdtBuilder_ != null) {
+          return cmdtBuilder_.getMessageOrBuilder();
+        } else {
+          return cmdt_;
+        }
+      }
+      /**
+       * <code>optional .org.drools.core.marshalling.Trigger.CompositeMaxDurationTrigger cmdt = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTriggerOrBuilder> 
+          getCmdtFieldBuilder() {
+        if (cmdtBuilder_ == null) {
+          cmdtBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTrigger.Builder, org.drools.core.marshalling.impl.ProtobufMessages.Trigger.CompositeMaxDurationTriggerOrBuilder>(
+                  cmdt_,
+                  getParentForChildren(),
+                  isClean());
+          cmdt_ = null;
+        }
+        return cmdtBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:org.drools.core.marshalling.Trigger)
     }
 
@@ -46470,6 +47340,11 @@ public final class ProtobufMessages {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_drools_core_marshalling_Trigger_PointInTimeTrigger_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -46675,26 +47550,32 @@ public final class ProtobufMessages {
       "rg.drools.core.marshalling.Trigger\"R\n\tTi" +
       "merType\022\n\n\006EXPIRE\020\001\022\016\n\nACTIVATION\020\002\022\014\n\010B" +
       "EHAVIOR\020\003\022\013\n\007PROCESS\020\004\022\016\n\nTIMER_NODE\020\005\"\316" +
-      "\005\n\007Trigger\022>\n\004type\030\001 \001(\01620.org.drools.co" +
+      "\007\n\007Trigger\022>\n\004type\030\001 \001(\01620.org.drools.co" +
       "re.marshalling.Trigger.TriggerType\022>\n\004cr" +
       "on\030\002 \001(\01320.org.drools.core.marshalling.T" +
       "rigger.CronTrigger\022F\n\010interval\030\003 \001(\01324.o",
       "rg.drools.core.marshalling.Trigger.Inter" +
       "valTrigger\022D\n\003pit\030\004 \001(\01327.org.drools.cor" +
       "e.marshalling.Trigger.PointInTimeTrigger" +
+      "\022N\n\004cmdt\030\005 \001(\0132@.org.drools.core.marshal" +
+      "ling.Trigger.CompositeMaxDurationTrigger" +
       "\032\247\001\n\013CronTrigger\022\022\n\nstart_time\030\001 \001(\003\022\020\n\010" +
       "end_time\030\002 \001(\003\022\024\n\014repeat_limit\030\003 \001(\005\022\024\n\014" +
       "repeat_count\030\004 \001(\005\022\027\n\017cron_expression\030\005 " +
       "\001(\t\022\026\n\016next_fire_time\030\006 \001(\003\022\025\n\rcalendar_" +
-      "name\030\007 \003(\t\032\242\001\n\017IntervalTrigger\022\022\n\nstart_" +
+      "name\030\007 \003(\t\032\242\001\n\017IntervalTrigger\022\022\n\nstart_",
       "time\030\001 \001(\003\022\020\n\010end_time\030\002 \001(\003\022\024\n\014repeat_l" +
-      "imit\030\003 \001(\005\022\024\n\014repeat_count\030\004 \001(\005\022\026\n\016next",
+      "imit\030\003 \001(\005\022\024\n\014repeat_count\030\004 \001(\005\022\026\n\016next" +
       "_fire_time\030\006 \001(\003\022\016\n\006period\030\007 \001(\003\022\025\n\rcale" +
       "ndar_name\030\010 \003(\t\032,\n\022PointInTimeTrigger\022\026\n" +
-      "\016next_fire_time\030\001 \001(\003\"8\n\013TriggerType\022\010\n\004" +
-      "CRON\020\000\022\014\n\010INTERVAL\020\001\022\021\n\rPOINT_IN_TIME\020\002B" +
-      "4\n org.drools.core.marshalling.implB\020Pro" +
-      "tobufMessages"
+      "\016next_fire_time\030\001 \001(\003\032\221\001\n\033CompositeMaxDu" +
+      "rationTrigger\022\034\n\024maxDurationTimestamp\030\001 " +
+      "\001(\003\022\030\n\020timerCurrentDate\030\002 \001(\003\022:\n\014timerTr" +
+      "igger\030\003 \001(\0132$.org.drools.core.marshallin" +
+      "g.Trigger\"T\n\013TriggerType\022\010\n\004CRON\020\000\022\014\n\010IN" +
+      "TERVAL\020\001\022\021\n\rPOINT_IN_TIME\020\002\022\032\n\026COMPOSITE",
+      "_MAX_DURATION\020\003B4\n org.drools.core.marsh" +
+      "alling.implB\020ProtobufMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -46994,7 +47875,7 @@ public final class ProtobufMessages {
           internal_static_org_drools_core_marshalling_Trigger_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_drools_core_marshalling_Trigger_descriptor,
-              new java.lang.String[] { "Type", "Cron", "Interval", "Pit", });
+              new java.lang.String[] { "Type", "Cron", "Interval", "Pit", "Cmdt", });
           internal_static_org_drools_core_marshalling_Trigger_CronTrigger_descriptor =
             internal_static_org_drools_core_marshalling_Trigger_descriptor.getNestedTypes().get(0);
           internal_static_org_drools_core_marshalling_Trigger_CronTrigger_fieldAccessorTable = new
@@ -47013,6 +47894,12 @@ public final class ProtobufMessages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_drools_core_marshalling_Trigger_PointInTimeTrigger_descriptor,
               new java.lang.String[] { "NextFireTime", });
+          internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_descriptor =
+            internal_static_org_drools_core_marshalling_Trigger_descriptor.getNestedTypes().get(3);
+          internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_org_drools_core_marshalling_Trigger_CompositeMaxDurationTrigger_descriptor,
+              new java.lang.String[] { "MaxDurationTimestamp", "TimerCurrentDate", "TimerTrigger", });
           return null;
         }
       };

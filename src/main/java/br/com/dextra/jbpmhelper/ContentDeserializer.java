@@ -11,13 +11,15 @@ import javax.xml.bind.DatatypeConverter;
 import org.drools.core.marshalling.impl.ProtobufMessages;
 import org.drools.core.marshalling.impl.ProtobufMessages.Header;
 import org.drools.core.marshalling.impl.ProtobufMessages.Header.StrategyIndex;
+import org.jbpm.marshalling.impl.JBPMMessages;
 import org.jbpm.marshalling.impl.JBPMMessages.Variable;
+import org.jbpm.marshalling.impl.JBPMMessages.VariableContainer;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.ExtensionRegistry;
 
 public class ContentDeserializer {
-	
+
 	private final byte[] content;
 	
 	public ContentDeserializer(byte[] content) {
@@ -38,18 +40,7 @@ public class ContentDeserializer {
 
 	private Map<String, Object> unmarshall() throws IOException, ClassNotFoundException {
 		Context context = new Context();
-		Map<String, Variable> fieldIndex = parseHeader(context);
-		Map<String, Object> result = new HashMap<>();
 
-		for (String key : fieldIndex.keySet()) {
-			result.put(key, this.unmarshallVariable(context, fieldIndex.get(key)));
-		}
-
-		return result;
-	}
-
-	@SuppressWarnings("unchecked")
-	private Map<String, Variable> parseHeader(Context context) throws IOException, ClassNotFoundException {
 		ByteArrayInputStream stream = new ByteArrayInputStream(this.content);
 		ObjectInputStream objStream = new ObjectInputStream(stream);
 		
@@ -60,10 +51,26 @@ public class ContentDeserializer {
 			context.read(new ObjectInputStream(strategy.getData().newInput()));
 		}
 		
-		Variable parseFrom = Variable.parseFrom(header.getPayload(), registry);
-		return (Map<String, Variable>) unmarshallVariable(context, parseFrom);
+        VariableContainer parseFrom = JBPMMessages.VariableContainer.parseFrom(header.getPayload(), registry);
+        Map<String, Object> value = unmarshallVariables(context, parseFrom);
+        
+        return value;
 	}
 
+	public Map<String, Object> unmarshallVariables(Context context, VariableContainer container) throws IOException, ClassNotFoundException {
+		Map<String, Object> variables = new HashMap<String, Object>();
+		if (container.getVariableCount() == 0) {
+			return variables;
+		}
+		
+		for (Variable variable : container.getVariableList()) {
+			Object value = unmarshallVariable(context, variable);
+			variables.put(variable.getName(), value);
+		}
+		
+		return variables;
+	}
+	
     private Object unmarshallVariable(Context ctx, Variable variable) throws IOException, ClassNotFoundException {
     	ByteString value = variable.getValue();
 		if(value == null || value.isEmpty()) return null;
