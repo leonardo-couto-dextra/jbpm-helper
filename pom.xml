@@ -13,9 +13,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:ssh://git@github.com/leonardo-couto-dextra/jbpm-helper.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/leonardo-couto-dextra/jbpm-helper.git</developerConnection>
-		<url>https://github.com/leonardo-couto-dextra/jbpm-helper</url>
+		<connection>scm:git:ssh://git@github.com/leonardo-couto/jbpm-helper.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/leonardo-couto/jbpm-helper.git</developerConnection>
+		<url>https://github.com/leonardo-couto/jbpm-helper</url>
 		<tag>HEAD</tag>
 	</scm>
 
